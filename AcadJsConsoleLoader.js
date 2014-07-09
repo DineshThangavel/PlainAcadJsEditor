@@ -1,0 +1,1 @@
+Acad.Application.addPalette("Acad JS Console","C:/Dinesh/AcadJsConsole/PlainAcadJsEditor/palleteLoader.html");

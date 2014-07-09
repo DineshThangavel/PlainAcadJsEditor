@@ -1,0 +1,35 @@
+var firstPoint,secondPoint;
+
+var options = new Acad.PromptPointOptions("give me the first point");
+Acad.Editor.getPoint(options).then(onFirstPoint,error);
+
+function onFirstPoint(obj)
+{
+  
+	firstPoint = obj.value;
+  
+    console.log("First point value:" + firstPoint.x + "," + firstPoint.y); 
+	
+	//again
+	var options = new Acad.PromptPointOptions("give me the second point");
+	Acad.Editor.getPoint(options).then(onSecondPoint,error);
+	
+}
+
+function error()
+{
+	alert("error getting a point");
+}
+
+
+function onSecondPoint(obj)
+{
+	secondPoint = obj.value;
+  
+  console.log("Second point value:" + secondPoint.x + "," + secondPoint.y); 
+  
+	
+	//draw rect
+	Acad.Editor.executeCommand("RECTANG",firstPoint.x + "," + 
+firstPoint.y,"",secondPoint.x + "," + secondPoint.y,"");
+}     
